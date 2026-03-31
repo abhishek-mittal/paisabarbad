@@ -84,7 +84,7 @@ function StarRating({ rating }: { rating: number }) {
   return (
     <span className="font-mono text-sm text-suspicious-yellow">
       {"★".repeat(rating)}
-      <span className="text-surface-muted">{"★".repeat(5 - rating)}</span>
+      <span className="text-text-muted">{"★".repeat(5 - rating)}</span>
     </span>
   );
 }
