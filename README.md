@@ -39,6 +39,10 @@ GITHUB_PAGES=true pnpm build
 
 Deploys automatically to GitHub Pages on push to `main`.
 
+## GitHub Pages
+
+You can access the live version of this project [here](https://abhishek-mittal.github.io/paisabarbad/).
+
 ## License
 
 MIT
