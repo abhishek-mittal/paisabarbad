@@ -12,7 +12,10 @@ export interface ProductReview {
   productName: string;
   brand: string;
   category: string;
-  image: string;
+  images: {
+    official: string[];
+    review: string[];
+  };
   sellerRating: number;
   realityScore: number;
   totalReviews: number;

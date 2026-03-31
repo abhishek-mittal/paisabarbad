@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { products } from "@/lib/stub-data";
+import { PaisaBarbadStamp } from "@/components/PaisaBarbadStamp";
+import { AddToCartButton } from "@/components/AddToCartButton";
 
 export const metadata: Metadata = {
   title: "All Roasted Products — PaisaBarbad",
@@ -83,58 +85,84 @@ export default function ReviewsPage() {
 
       {/* Bento product grid */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {products.map((p, i) => (
-          <Link
-            key={p.slug}
-            href={`/reviews/${p.slug}/`}
-            className={`bento-card group block p-6 ${i === 0 ? "md:col-span-2 lg:col-span-2 lg:row-span-1" : ""}`}
-          >
-            <div className="mb-3 flex items-start justify-between">
-              <div>
-                <p className="mb-1 font-mono text-xs uppercase tracking-wider text-text-muted">
-                  {p.category} · {p.source} · {p.price}
-                </p>
-                <h2 className="font-display text-xl font-bold text-text group-hover:text-primary transition-colors">
-                  {p.productName}
-                </h2>
-                <p className="text-sm text-text-secondary">{p.brand}</p>
-              </div>
-              <BuyOrCryBadge verdict={p.aiAnalysis.buyOrCry} />
-            </div>
-
-            <div className="mb-3 grid grid-cols-2 gap-3">
-              <div>
-                <p className="font-mono text-xs text-text-muted">
-                  Seller&apos;s Delusion
-                </p>
-                <p className="font-bold text-text">
-                  {p.sellerRating}/5 ⭐
-                </p>
-              </div>
-              <div>
-                <p className="font-mono text-xs text-text-muted">
-                  Reality Score 💀
-                </p>
-                <RealityMeter score={p.realityScore} />
-              </div>
-            </div>
-
-            <div className="mb-3 flex flex-wrap gap-2">
-              <span className="rounded-lg bg-lie-red/8 px-2 py-0.5 font-mono text-xs font-bold text-lie-red">
-                {p.fakeReviewPercent}% Fake
+        {products.map((p) => (
+          <div key={p.slug} className="bento-card group flex flex-col overflow-hidden">
+            {/* Product image */}
+            <Link
+              href={`/reviews/${p.slug}/`}
+              className="relative block aspect-[4/3] overflow-hidden bg-surface-muted"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={p.images.official[0]}
+                alt={p.productName}
+                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              {p.aiAnalysis.buyOrCry === "cry" && <PaisaBarbadStamp size="md" />}
+              <span className="absolute left-2 top-2 rounded-lg bg-surface/90 px-2 py-0.5 font-mono text-xs text-text-muted backdrop-blur-sm">
+                {p.category}
               </span>
-              <span className="rounded-lg bg-surface-muted px-2 py-0.5 font-mono text-xs text-text-secondary">
-                {p.totalReviews.toLocaleString("en-IN")} reviews
-              </span>
-              <span className={`rounded-lg px-2 py-0.5 font-mono text-xs font-bold ${supportScoreColor(p.serviceMetrics.customerSupportScore)}`}>
-                🛎️ Support {p.serviceMetrics.customerSupportScore}/5
-              </span>
-            </div>
+            </Link>
 
-            <p className="text-sm italic text-text-secondary leading-relaxed">
-              &ldquo;{p.sarcasticVerdict}&rdquo;
-            </p>
-          </Link>
+            {/* Card body */}
+            <div className="flex flex-1 flex-col p-5">
+              <div className="mb-3 flex items-start justify-between gap-2">
+                <div className="flex-1">
+                  <p className="mb-0.5 font-mono text-xs uppercase tracking-wider text-text-muted">
+                    {p.source} · {p.price}
+                  </p>
+                  <Link href={`/reviews/${p.slug}/`}>
+                    <h2 className="font-display text-lg font-bold text-text transition-colors group-hover:text-primary">
+                      {p.productName}
+                    </h2>
+                  </Link>
+                  <p className="text-sm text-text-secondary">{p.brand}</p>
+                </div>
+                <BuyOrCryBadge verdict={p.aiAnalysis.buyOrCry} />
+              </div>
+
+              <div className="mb-3 grid grid-cols-2 gap-3">
+                <div>
+                  <p className="font-mono text-xs text-text-muted">
+                    Seller&apos;s Delusion
+                  </p>
+                  <p className="font-bold text-text">{p.sellerRating}/5 ⭐</p>
+                </div>
+                <div>
+                  <p className="font-mono text-xs text-text-muted">Reality Score 💀</p>
+                  <RealityMeter score={p.realityScore} />
+                </div>
+              </div>
+
+              <div className="mb-3 flex flex-wrap gap-2">
+                <span className="rounded-lg bg-lie-red/8 px-2 py-0.5 font-mono text-xs font-bold text-lie-red">
+                  {p.fakeReviewPercent}% Fake
+                </span>
+                <span className="rounded-lg bg-surface-muted px-2 py-0.5 font-mono text-xs text-text-secondary">
+                  {p.totalReviews.toLocaleString("en-IN")} reviews
+                </span>
+                <span
+                  className={`rounded-lg px-2 py-0.5 font-mono text-xs font-bold ${supportScoreColor(p.serviceMetrics.customerSupportScore)}`}
+                >
+                  🛎️ Support {p.serviceMetrics.customerSupportScore}/5
+                </span>
+              </div>
+
+              <p className="mb-4 flex-1 text-sm italic leading-relaxed text-text-secondary">
+                &ldquo;{p.sarcasticVerdict}&rdquo;
+              </p>
+
+              <div className="flex items-center gap-2">
+                <AddToCartButton product={p} size="sm" />
+                <Link
+                  href={`/reviews/${p.slug}/`}
+                  className="inline-flex items-center rounded-lg bg-surface-muted px-3 py-1.5 font-mono text-xs text-text-secondary transition hover:bg-border hover:text-text"
+                >
+                  Full Review →
+                </Link>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
     </main>

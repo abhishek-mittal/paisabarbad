@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { products } from "@/lib/stub-data";
+import { PaisaBarbadStamp } from "@/components/PaisaBarbadStamp";
+import { AddToCartButton } from "@/components/AddToCartButton";
 
 function RealityMeter({ score }: { score: number }) {
   const pct = (score / 5) * 100;
@@ -41,53 +43,78 @@ function BuyOrCryBadge({ verdict }: { verdict: "buy" | "cry" | "maybe" }) {
 }
 
 function ProductCard({ product }: { product: (typeof products)[0] }) {
+  const isCry = product.aiAnalysis.buyOrCry === "cry";
   return (
-    <Link
-      href={`/reviews/${product.slug}/`}
-      className="bento-card group block p-6"
-    >
-      <div className="mb-4 flex items-start justify-between">
-        <div className="flex-1">
-          <p className="mb-1 font-mono text-xs uppercase tracking-wider text-text-muted">
-            {product.category} · {product.source}
-          </p>
-          <h3 className="font-display text-lg font-bold text-text group-hover:text-primary transition-colors">
-            {product.productName}
-          </h3>
-          <p className="text-sm text-text-secondary">{product.brand}</p>
-        </div>
-        <span className="font-display text-lg font-bold text-primary">
-          {product.price}
+    <div className="bento-card group flex flex-col overflow-hidden">
+      {/* Product image */}
+      <Link href={`/reviews/${product.slug}/`} className="relative block aspect-[4/3] overflow-hidden bg-surface-muted">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={product.images.official[0]}
+          alt={product.productName}
+          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+        {isCry && <PaisaBarbadStamp size="md" />}
+        <span className="absolute left-2 top-2 rounded-lg bg-surface/90 px-2 py-0.5 font-mono text-xs text-text-muted backdrop-blur-sm">
+          {product.category}
         </span>
-      </div>
+      </Link>
 
-      <div className="mb-4 grid grid-cols-2 gap-3">
-        <div>
-          <p className="mb-1 font-mono text-xs text-text-muted">
-            Seller&apos;s Delusion ⭐
-          </p>
-          <p className="font-bold text-text">{product.sellerRating}/5</p>
+      {/* Card body */}
+      <div className="flex flex-1 flex-col p-5">
+        <div className="mb-3 flex items-start justify-between gap-2">
+          <div className="flex-1">
+            <p className="mb-0.5 font-mono text-xs text-text-muted">{product.source}</p>
+            <Link href={`/reviews/${product.slug}/`}>
+              <h3 className="font-display text-base font-bold text-text transition-colors group-hover:text-primary">
+                {product.productName}
+              </h3>
+            </Link>
+            <p className="text-xs text-text-secondary">{product.brand}</p>
+          </div>
+          <span className="shrink-0 font-display text-lg font-bold text-primary">
+            {product.price}
+          </span>
         </div>
-        <div>
-          <p className="mb-1 font-mono text-xs text-text-muted">Reality Score 💀</p>
-          <RealityMeter score={product.realityScore} />
+
+        <div className="mb-3 grid grid-cols-2 gap-3">
+          <div>
+            <p className="mb-0.5 font-mono text-xs text-text-muted">
+              Seller&apos;s Delusion ⭐
+            </p>
+            <p className="font-bold text-text">{product.sellerRating}/5</p>
+          </div>
+          <div>
+            <p className="mb-0.5 font-mono text-xs text-text-muted">Reality Score 💀</p>
+            <RealityMeter score={product.realityScore} />
+          </div>
+        </div>
+
+        <div className="mb-3 flex flex-wrap items-center gap-2">
+          <span className="inline-flex items-center rounded-lg bg-lie-red/8 px-2.5 py-1 font-mono text-xs font-bold text-lie-red">
+            {product.fakeReviewPercent}% Fake
+          </span>
+          <span className="inline-flex items-center rounded-lg bg-surface-muted px-2.5 py-1 font-mono text-xs text-text-secondary">
+            {product.totalReviews.toLocaleString("en-IN")} reviews
+          </span>
+          <BuyOrCryBadge verdict={product.aiAnalysis.buyOrCry} />
+        </div>
+
+        <p className="mb-4 flex-1 text-xs italic leading-relaxed text-text-secondary">
+          &ldquo;{product.sarcasticVerdict}&rdquo;
+        </p>
+
+        <div className="flex items-center gap-2">
+          <AddToCartButton product={product} size="sm" />
+          <Link
+            href={`/reviews/${product.slug}/`}
+            className="inline-flex items-center rounded-lg bg-surface-muted px-3 py-1.5 font-mono text-xs text-text-secondary transition hover:bg-border hover:text-text"
+          >
+            Full Review →
+          </Link>
         </div>
       </div>
-
-      <div className="mb-4 flex flex-wrap items-center gap-2">
-        <span className="inline-flex items-center rounded-lg bg-lie-red/8 px-2.5 py-1 font-mono text-xs font-bold text-lie-red">
-          {product.fakeReviewPercent}% Fake
-        </span>
-        <span className="inline-flex items-center rounded-lg bg-surface-muted px-2.5 py-1 font-mono text-xs text-text-secondary">
-          {product.totalReviews.toLocaleString("en-IN")} reviews
-        </span>
-        <BuyOrCryBadge verdict={product.aiAnalysis.buyOrCry} />
-      </div>
-
-      <p className="text-sm italic text-text-secondary leading-relaxed">
-        &ldquo;{product.sarcasticVerdict}&rdquo;
-      </p>
-    </Link>
+    </div>
   );
 }
 
@@ -228,10 +255,8 @@ export default function HomePage() {
           </Link>
         </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {products.map((p, i) => (
-            <div key={p.slug} className={i === 0 ? "md:col-span-2 lg:col-span-2" : ""}>
-              <ProductCard product={p} />
-            </div>
+          {products.map((p) => (
+            <ProductCard key={p.slug} product={p} />
           ))}
         </div>
       </section>

@@ -6,7 +6,16 @@ export const products: ProductReview[] = [
     productName: "UltraBass Pro X9000 TWS Earbuds",
     brand: "SoundKing",
     category: "Electronics",
-    image: "",
+    images: {
+      official: [
+        "https://picsum.photos/seed/earbuds-official-1/400/400",
+        "https://picsum.photos/seed/earbuds-official-2/400/400",
+      ],
+      review: [
+        "https://picsum.photos/seed/earbuds-review-1/400/400",
+        "https://picsum.photos/seed/earbuds-review-2/400/400",
+      ],
+    },
     sellerRating: 4.5,
     realityScore: 2.1,
     totalReviews: 12847,
@@ -89,7 +98,16 @@ export const products: ProductReview[] = [
     productName: "GlowMax 360° Youth Restore Cream",
     brand: "DermaGlow",
     category: "Beauty & Personal Care",
-    image: "",
+    images: {
+      official: [
+        "https://picsum.photos/seed/cream-official-1/400/400",
+        "https://picsum.photos/seed/cream-official-2/400/400",
+      ],
+      review: [
+        "https://picsum.photos/seed/cream-review-1/400/400",
+        "https://picsum.photos/seed/cream-review-2/400/400",
+      ],
+    },
     sellerRating: 4.3,
     realityScore: 1.8,
     totalReviews: 8932,
@@ -165,7 +183,16 @@ export const products: ProductReview[] = [
     productName: "TactiWatch Pro Military Grade Smartwatch",
     brand: "StealthFit",
     category: "Electronics",
-    image: "",
+    images: {
+      official: [
+        "https://picsum.photos/seed/watch-official-1/400/400",
+        "https://picsum.photos/seed/watch-official-2/400/400",
+      ],
+      review: [
+        "https://picsum.photos/seed/watch-review-1/400/400",
+        "https://picsum.photos/seed/watch-review-2/400/400",
+      ],
+    },
     sellerRating: 4.1,
     realityScore: 2.4,
     totalReviews: 5621,
@@ -242,7 +269,16 @@ export const products: ProductReview[] = [
     productName: "SlimLeaf Organic Green Tea - 28 Day Detox",
     brand: "HerbVeda",
     category: "Grocery & Gourmet",
-    image: "",
+    images: {
+      official: [
+        "https://picsum.photos/seed/tea-official-1/400/400",
+        "https://picsum.photos/seed/tea-official-2/400/400",
+      ],
+      review: [
+        "https://picsum.photos/seed/tea-review-1/400/400",
+        "https://picsum.photos/seed/tea-review-2/400/400",
+      ],
+    },
     sellerRating: 4.6,
     realityScore: 2.8,
     totalReviews: 15234,
@@ -310,7 +346,16 @@ export const products: ProductReview[] = [
     productName: "ThunderBass X500 Portable Speaker",
     brand: "BoomBox",
     category: "Electronics",
-    image: "",
+    images: {
+      official: [
+        "https://picsum.photos/seed/speaker-official-1/400/400",
+        "https://picsum.photos/seed/speaker-official-2/400/400",
+      ],
+      review: [
+        "https://picsum.photos/seed/speaker-review-1/400/400",
+        "https://picsum.photos/seed/speaker-review-2/400/400",
+      ],
+    },
     sellerRating: 4.2,
     realityScore: 3.1,
     totalReviews: 7845,
@@ -379,7 +424,16 @@ export const products: ProductReview[] = [
     productName: "PosturePerfect Pro Ergonomic Office Chair",
     brand: "SitRight",
     category: "Furniture",
-    image: "",
+    images: {
+      official: [
+        "https://picsum.photos/seed/chair-official-1/400/400",
+        "https://picsum.photos/seed/chair-official-2/400/400",
+      ],
+      review: [
+        "https://picsum.photos/seed/chair-review-1/400/400",
+        "https://picsum.photos/seed/chair-review-2/400/400",
+      ],
+    },
     sellerRating: 3.9,
     realityScore: 3.4,
     totalReviews: 3421,

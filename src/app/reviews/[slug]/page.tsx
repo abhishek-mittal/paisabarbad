@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getProductBySlug, getAllSlugs } from "@/lib/stub-data";
+import { ImageSwitcher } from "@/components/ImageSwitcher";
+import { AddToCartButton } from "@/components/AddToCartButton";
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -143,7 +145,17 @@ export default async function ProductReviewPage({
 
       {/* ═══ STEP 1: Product Overview (Bento) ═══ */}
       <section className="mb-8 grid gap-4 md:grid-cols-3">
-        {/* Product info — spans 2 cols */}
+        {/* Image switcher — left column */}
+        <div className="bento-card col-span-full overflow-hidden p-4 md:col-span-1">
+          <ImageSwitcher
+            officialImages={product.images.official}
+            reviewImages={product.images.review}
+            productName={product.productName}
+            verdict={product.aiAnalysis.buyOrCry}
+          />
+        </div>
+
+        {/* Product info — right two cols */}
         <div className="bento-card col-span-full p-6 md:col-span-2">
           <p className="mb-2 font-mono text-xs uppercase tracking-wider text-text-muted">
             {product.category} · {product.source} · {product.brand}
@@ -151,9 +163,12 @@ export default async function ProductReviewPage({
           <h1 className="font-display text-3xl font-bold text-text md:text-4xl">
             {product.productName}
           </h1>
-          <p className="mt-2 font-display text-2xl font-bold text-primary">
-            {product.price}
-          </p>
+          <div className="mt-2 flex flex-wrap items-center gap-3">
+            <p className="font-display text-2xl font-bold text-primary">
+              {product.price}
+            </p>
+            <AddToCartButton product={product} size="md" />
+          </div>
           <div className="mt-4 rounded-xl bg-accent/5 p-4 border border-accent/15">
             <p className="mb-1 font-mono text-xs font-medium text-accent">
               🎭 The Sarcastic Verdict
@@ -164,8 +179,8 @@ export default async function ProductReviewPage({
           </div>
         </div>
 
-        {/* Score cards — bento stack */}
-        <div className="col-span-full grid gap-4 sm:grid-cols-3 md:col-span-1 md:grid-cols-1">
+        {/* Score cards — span full width below */}
+        <div className="col-span-full grid gap-4 sm:grid-cols-3">
           <div className="bento-card p-5 text-center">
             <p className="font-mono text-xs text-text-muted">
               Seller&apos;s Delusion ⭐

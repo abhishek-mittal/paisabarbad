@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { CartProvider } from "@/lib/cart-context";
+import { Navbar } from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "PaisaBarbad — We Read Reviews So You Don't Have to Cry Later",
@@ -44,7 +46,12 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen bg-surface-alt antialiased">{children}</body>
+      <body className="min-h-screen bg-surface-alt antialiased">
+        <CartProvider>
+          <Navbar />
+          {children}
+        </CartProvider>
+      </body>
     </html>
   );
 }
