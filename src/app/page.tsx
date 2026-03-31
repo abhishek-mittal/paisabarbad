@@ -163,8 +163,8 @@ export default function HomePage() {
           </span>
         </div>
         <h1 className="font-display text-5xl font-bold leading-tight md:text-7xl">
-          <span className="glow-green text-toxic-green">Sarcasti</span>
-          <span className="glow-pink text-sarcasm-pink">Q</span>
+          <span className="glow-green text-toxic-green">Paisa</span>
+          <span className="glow-pink text-sarcasm-pink">Barbad</span>
         </h1>
         <p className="mx-auto mt-4 max-w-2xl font-display text-xl text-gray-300 md:text-2xl">
           We read the reviews so you don&apos;t have to{" "}
@@ -199,7 +199,7 @@ export default function HomePage() {
       {/* ═══ HOW IT WORKS ═══ */}
       <section className="mb-16">
         <h2 className="mb-8 text-center font-display text-3xl font-bold text-white">
-          How <span className="text-roast-orange">SarcastIQ</span> Works
+          How <span className="text-roast-orange">PaisaBarbad</span> Works
         </h2>
         <div className="grid gap-6 md:grid-cols-3">
           {[
@@ -320,7 +320,7 @@ export default function HomePage() {
       {/* ═══ FOOTER ═══ */}
       <footer className="border-t border-void-lighter py-8 text-center">
         <p className="font-display text-sm text-gray-500">
-          <span className="text-toxic-green">SarcastIQ</span> · Built with 🎭
+          <span className="text-toxic-green">PaisaBarbad</span> · Built with 🎭
           sarcasm and ☕ chai
         </p>
         <p className="mt-1 font-mono text-xs text-gray-600">

@@ -13,9 +13,9 @@ export function generateMetadata({
 }): Promise<Metadata> {
   return params.then(({ slug }) => {
     const product = getProductBySlug(slug);
-    if (!product) return { title: "Not Found — SarcastIQ" };
+    if (!product) return { title: "Not Found — PaisaBarbad" };
     return {
-      title: `${product.productName} — Roasted by SarcastIQ`,
+      title: `${product.productName} — Roasted by PaisaBarbad`,
       description: product.sarcasticVerdict,
       openGraph: {
         title: `${product.productName} — Reality Score: ${product.realityScore}/5 💀`,

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { products } from "@/lib/stub-data";
 
 export const metadata: Metadata = {
-  title: "All Roasted Products — SarcastIQ",
+  title: "All Roasted Products — PaisaBarbad",
   description:
     "Browse every product we've ruthlessly analyzed. Fake review percentages, Reality Scores, and sarcastic AI verdicts included at no extra charge.",
 };

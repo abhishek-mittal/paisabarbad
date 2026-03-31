@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "SarcastIQ — We Read Reviews So You Don't Have to Cry Later",
+  title: "PaisaBarbad — We Read Reviews So You Don't Have to Cry Later",
   description:
     "India's first sarcasm-powered review aggregator. AI-analyzed product reviews from Amazon.in & Flipkart that cut through the fake 5-star propaganda and show you the brutal truth.",
   keywords: [
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "AI review analyzer",
   ],
   openGraph: {
-    title: "SarcastIQ — The Truth Behind Your ⭐⭐⭐⭐⭐ Reviews",
+    title: "PaisaBarbad — The Truth Behind Your ⭐⭐⭐⭐⭐ Reviews",
     description:
       "AI-powered sarcasm that exposes what product reviews ACTUALLY mean. Because 68% of 5-star reviews are written by the seller's cousin.",
     type: "website",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SarcastIQ — Brutally Honest Review Intelligence",
+    title: "PaisaBarbad — Brutally Honest Review Intelligence",
     description:
       "We read the reviews so you don't have to cry later. AI-powered truth from Indian e-commerce.",
   },

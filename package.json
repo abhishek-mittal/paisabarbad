@@ -1,8 +1,8 @@
 {
-  "name": "sarcastiq",
+  "name": "paisabarbad",
   "version": "0.1.0",
   "private": true,
-  "description": "🎭 Sarcasm-first review aggregator — We read the reviews so you don't have to cry later.",
+  "description": "🎭 PaisaBarbad — We read the reviews so you don't have to cry later.",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",

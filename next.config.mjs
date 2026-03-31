@@ -4,7 +4,7 @@ const nextConfig = {
   output: "export",
   images: { unoptimized: true },
   trailingSlash: true,
-  basePath: process.env.GITHUB_PAGES === "true" ? "/sarcastiq" : "",
+  basePath: process.env.GITHUB_PAGES === "true" ? "/paisabarbad" : "",
 };
 
 export default nextConfig;

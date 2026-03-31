@@ -1,4 +1,4 @@
-# 🎭 SarcastIQ
+# 🎭 PaisaBarbad
 
 > **We read the reviews so you don't have to cry later.**
 
@@ -6,7 +6,7 @@ India's first sarcasm-powered review aggregator. AI analysis that cuts through t
 
 ## What is this?
 
-SarcastIQ collects product reviews from Indian e-commerce platforms and uses AI to:
+PaisaBarbad collects product reviews from Indian e-commerce platforms and uses AI to:
 
 - **Detect fake reviews** — Flagging bribed, copypasta, and suspicious reviews
 - **Translate review-speak** — What they say vs. what they actually mean
